@@ -1,0 +1,8 @@
+1. richiesta
+2. analisi di richiesta
+3. glossario delle entità
+4. glossario delle associazioni
+5. schema concettuale (ER)
+6. normalizzazioni ER
+7. schema logico
+8. schema fisico (creazione db, interrogazioni, funzioni, trigger)
