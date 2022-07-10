@@ -1,0 +1,11 @@
+codice~assegnazione~stato~ubicazione
+P-MAR~collaboratore~valido~bad value
+C-LUC~associazione~valido
+F-ALD~associazione~valido
+C-GIO~inserviente~scaduto
+OO1~provvisorio~valido~cassetto 1
+OO2~provvisorio~valido~cassetto 3
+OO3~provvisorio~valido~cassetto 2
+CHIAVE1~chiave~valido~cassetto 3
+CHIAVE2~chiave~valido~cassetto 2
+CHIAVE3~chiave~valido~cassetto 2
