@@ -30,6 +30,7 @@ create table if not exists nominativo(
     badge_cod varchar(16) not null,
     ndoc varchar(16) not null,
     tdoc enum("carta-identita", "patente", "tessera-studente") not null,
+    scadenza datetime,
     primary key(badge_cod),
     foreign key(badge_cod) references badge(codice),
     foreign key(ndoc, tdoc) references persona(ndoc, tdoc)
@@ -40,6 +41,7 @@ create table if not exists chiave(
     indirizzo varchar(64),
     citta varchar(32),
     piano char(3),
+    edificio varchar(32),
     primary key (badge_cod),
     foreign key (badge_cod) references badge(codice)
 ) engine = innodb;
@@ -237,40 +239,40 @@ ignore 1 rows;
 -- ("6543210", "tessera-studente", "Andrea", "Bongianni", null);
 
 insert into nominativo values
-("P-MAR", "AUX69420", "carta-identita"),
-("C-LUC", "AUX42069", "patente"),
-("F-ALD", "AUX69000", "carta-identita"),
-("C-GIO", "AUX69690", "carta-identita");
+("P-MAR", "AUX69420", "carta-identita", null),
+("C-LUC", "AUX42069", "patente", "2023-09-05"),
+("F-ALD", "AUX69000", "carta-identita", "2025-04-20"),
+("C-GIO", "AUX69690", "carta-identita", null);
 
 insert into chiave values
-("CHIAVE1", "via Calcinaia 420", "Carmignano", "0"),
-("CHIAVE2", "viale Montegrappa 69", "Prato", "1B"),
-("CHIAVE3", "Groove Street 23", "Grignano", "2");
+("CHIAVE1", "via Calcinaia 420", "Carmignano", "0", "edificio A"),
+("CHIAVE2", "viale Montegrappa 69", "Prato", "1B", "edificio B"),
+("CHIAVE3", "Groove Street 23", "Grignano", "2", "edificio C");
 
 insert into instrutt_nom values
-(1, now(), "P-MAR"),
-(2, now(), "C-LUC")/*,
+(1, "2022-07-01 08:31:57", "P-MAR"),
+(2, "2022-07-01 14:02:11", "C-LUC")/*,
 (3, now(), "C-LUC")*/;
 
 insert into archivio_nom values
-(1, now()),
-(2, now());
+(1, "2022-07-01 16:45:02"),
+(2, "2022-07-01 22:05:27");
 
 insert into instrutt_nom values
 (3, now(), "C-LUC");
 
 insert into instrutt_osp values
 -- (1001, now(), "OO1", "0123456", "tessera-studente"),
-(1002, now(), "OO1", "AUX00069", "patente");
+(1002, "2022-07-01 08:34:47", "OO1", "AUX00069", "patente");
 
 insert into archivio_osp values
-(1002, now());
+(1002, "2022-07-01 11:25:12");
 
 insert into instrutt_osp values
 (1001, now(), "OO1", "0123456", "tessera-studente");
 
 insert into instrutt_chiave values
-(2001, now(), "P-MAR")/*,
+(2001, "2022-07-01 9:05:35", "P-MAR")/*,
 (2002, now(), "P-MAR")*/;
 
 insert into chiave_in_prestito values
@@ -279,7 +281,7 @@ insert into chiave_in_prestito values
 (2002, "CHIAVE2")*/;
 
 insert into archivio_chiave values
-(2001, now());
+(2001, "2022-07-01 12:16:07");
 
 insert into instrutt_chiave values
 (2002, now(), "P-MAR");
